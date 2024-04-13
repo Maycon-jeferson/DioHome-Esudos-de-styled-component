@@ -2,6 +2,8 @@ import { Button } from "../../components/Button";
 import { Header } from "../../components/Header";
 import { Input } from "../../components/Input";
 
+import { useNavigate } from "react-router-dom";
+
 import {
     Colunm,
     Conteiner,
@@ -15,6 +17,13 @@ import {
 } from "./stye"
 
 const Login = () => {
+
+    const navigate = useNavigate();
+
+    const handleClickSingin = () => {
+        navigate('/feed')
+    }
+
     return (<>
         <Header />
         <Conteiner>
@@ -34,7 +43,7 @@ const Login = () => {
                     <form action="">
                         <Input placeholder="email"/>
                         <Input placeholder="Senha" type="password"/>
-                        <Button title="Entrar" variant="secondary"/>
+                        <Button title="Entrar" variant="secondary" onClick={handleClickSingin} type="button"/>
                     </form>
                     <Row>
                         <EsqueciText>Esqueci a senha</EsqueciText>

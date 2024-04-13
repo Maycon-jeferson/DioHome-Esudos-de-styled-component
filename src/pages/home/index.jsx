@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
-import Banner from "../../assets/Banner.jpg"
+import { useNavigate } from "react-router-dom";
 
+import Banner from "../../assets/Banner.jpg"
 import { Button } from "../../components/Button";
 import { Header } from "../../components/Header/index";
 
@@ -9,6 +9,13 @@ import {
 } from "./stye"
 
 const Home = () => {
+
+    const navigate = useNavigate();
+
+    const handleClickSingin = () => {
+        navigate('/login')
+    }
+
     return (<>
         <Header />
         <Conteiner>
@@ -25,7 +32,7 @@ const Home = () => {
                     illo fuga vel excepturi explicabo similique et minima perspiciatis accusamus enim? Veniam, 
                     maxime?
                 </TextContent>
-                <Button title="Comneçar agora" variant="secudary" onClick={() => null} />
+                <Button title="Comneçar agora" variant="secudary" onClick={handleClickSingin} />
             </div>
             <div>
                 <img src={Banner} alt="#" width="520" />
