@@ -7,6 +7,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from 'yup';
 
 import { useNavigate } from "react-router-dom";
+import { api } from '../../services/api'
 
 import {
     Colunm,
@@ -32,18 +33,24 @@ const Login = () => {
     const {
         control,
         handleSubmit,
-        formState: { errors, isValid }
-      } = useForm({
+        formState: { errors }
+    } = useForm({
         resolver: yupResolver(schema),
         mode: 'onChange',
-      });
-      console.log(isValid, errors);
+        });
 
-      const onSubmit = (data) => console.log(data)
-
-    const handleClickSingin = () => {
-        navigate('/feed')
-    }
+    const onSubmit = async formData => {
+        try{
+            const { data } = await api.get(`users?email=${formData.email}&senha=${formData.password}`);
+            if(data.length === 1){
+                navigate('/feed')
+            }else{
+                alert('senha ou email errado')
+            }
+        }catch{
+            alert('erro tende denovo')
+        }
+    };
 
     return (<>
         <Header />
@@ -64,7 +71,7 @@ const Login = () => {
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <Input name="email" errorMessege={errors?.email?.message} control={control} placeholder="email" />
                         <Input name="password" errorMessege={errors?.password?.message} control={control} placeholder="Senha" type="password" />
-                        <Button title="Entrar" variant="secondary" onClick={handleClickSingin} type="submit" />
+                        <Button title="Entrar" variant="secondary"  type="submit" />
                     </form>
                     <Row>
                         <EsqueciText>Esqueci a senha</EsqueciText>
