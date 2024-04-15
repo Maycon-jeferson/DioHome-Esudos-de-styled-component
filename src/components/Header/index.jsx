@@ -2,6 +2,8 @@ import React from 'react'
 import logo from '../../assets/Dio-logo.jpg'
 import { Button } from '../Button'
 
+import { useNavigate } from 'react-router-dom';
+
 import {
     BuscarInputConteiner,
     Conteirner,
@@ -13,7 +15,18 @@ import {
     UserPicture
 } from './styles';
 
+
 const Header = ({autenticado}) => {
+
+  const navigate = useNavigate();
+
+  const handleClickSingin = () => {
+        navigate('/login')
+  }
+  const handleClickRegister = () => {
+        navigate('/register')
+  }
+
   return (
     <Wrapper>
       <Conteirner>
@@ -36,8 +49,8 @@ const Header = ({autenticado}) => {
           ) : (
             <>
               <MenRight href="#">Home</MenRight>
-              <Button title="Entrar" />
-              <Button title="Cadastrar" />
+              <Button title="Entrar" onClick={handleClickSingin} />
+              <Button title="Cadastrar" onClick={handleClickRegister}/>
             </>
           )
         }

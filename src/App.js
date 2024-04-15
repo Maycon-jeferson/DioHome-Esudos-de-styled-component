@@ -7,6 +7,7 @@ import {
 import { Home } from './pages/home/index'
 import { Login } from './pages/login/index'
 import { Feed } from './pages/feed/index'
+import { Register } from './pages/regiser/index'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Home />}/>
         <Route path="/login" element={<Login />}/>
         <Route path="/feed" element={<Feed />}/>
+        <Route path="/register" element={<Register />}/>
       </Routes>
     </Router>
   );

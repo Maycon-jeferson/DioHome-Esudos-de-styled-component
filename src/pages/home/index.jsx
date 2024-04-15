@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-import Banner from "../../assets/Banner.jpg"
+import Banner from "../../assets/Banner.png"
 import { Button } from "../../components/Button";
 import { Header } from "../../components/Header/index";
 
@@ -27,15 +27,12 @@ const Home = () => {
                     o seu futuro global agora!
                 </Tittle>
                 <TextContent>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                    Necessitatibus quae ex quam illum aperiam atque nostrum consequuntur, 
-                    illo fuga vel excepturi explicabo similique et minima perspiciatis accusamus enim? Veniam, 
-                    maxime?
+                    Domine as tecnologias utilizadas pelas empresas mais inovadoras do mundo e encare seu novo desafio profissional, evoluindo em comunidade com os melhores experts.
                 </TextContent>
                 <Button title="Comneçar agora" variant="secudary" onClick={handleClickSingin} />
             </div>
             <div>
-                <img src={Banner} alt="#" width="520" />
+                <img src={Banner} alt="#"/>
             </div>
         </Conteiner>
     </>)

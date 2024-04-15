@@ -43,15 +43,15 @@ export const TittleLogin = styled.p`
     font-weight: 700;
     font-size: 32px;
     margin-bottom: 20px;
+    margin-top: 10px;
     line-height: 44px;
 `
 
 export const SubTittleLogin = styled.p`
     font-family: 'Open Sans';
-    font-style: normal;
     font-weight: 400;
-    font-size: 18px;
-    margin-bottom: 35px;
+    font-size: 16px;
+    margin-bottom: 15px;
     line-height: 25px;
 `
 
@@ -65,7 +65,7 @@ export const EsqueciText = styled.p`
     color: #e5e044;
 `
 
-export const CriarText = styled.a`
+export const LoginText = styled.a`
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 400;
@@ -73,5 +73,14 @@ export const CriarText = styled.a`
     line-height: 19px;
     text-decoration: none;
 
-    color: #e23dd7;
+    color: #23DD7A;
+`
+
+export const Rowtext = styled.p`
+    font-family: 'Open Sans';
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 19px;
+
+    color: #fff;
 `

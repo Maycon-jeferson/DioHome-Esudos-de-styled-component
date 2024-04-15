@@ -12,21 +12,22 @@ import { api } from '../../services/api'
 import {
     Colunm,
     Conteiner,
-    CriarText,
-    EsqueciText,
+    Rowtext,
     Row,
     SubTittleLogin,
     Tittle,
     TittleLogin,
-    Wrapper
+    Wrapper,
+    LoginText
 } from "./stye"
 
 const schema = yup.object({
-    email: yup.string().email('email invalido').required("campo obrigatorio"),
-    password: yup.string().min(3, '3 no minimo').required("campo obrigatorio"),
+    email: yup.string().email('email invalido').required("*campo obrigatorio"),
+    password: yup.string().min(3, '3 no minimo').required("*campo obrigatorio"),
+    nome: yup.string().required("*campo obrigatorio")
 }).required();
 
-const Login = () => {
+const Register = () => {
 
     const navigate = useNavigate();
 
@@ -57,25 +58,31 @@ const Login = () => {
         <Conteiner>
             <Colunm>
                 <Tittle>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto porro re
+                A plataforma para você aprender com experts, dominar as principais tecnologias e entrar mais rápido nas empresas mais desejadas.
                 </Tittle>
             </Colunm>
             <div>
                 <Wrapper>
                     <TittleLogin>
-                        cadastro
+                        Comece agora grátis
                     </TittleLogin>
                     <SubTittleLogin>
-                        Chage._
+                        Crie sua conta e make the change._
                     </SubTittleLogin>
                     <form onSubmit={handleSubmit(onSubmit)}>
+                        <Input name="nome" errorMessege={errors?.nome?.message} control={control} placeholder="Nome completo" />
+
                         <Input name="email" errorMessege={errors?.email?.message} control={control} placeholder="email" />
+
                         <Input name="password" errorMessege={errors?.password?.message} control={control} placeholder="Senha" type="password" />
-                        <Button title="Entrar" variant="secondary"  type="submit" />
+
+                        <Button title="Criar minha conta" variant="secondary"  type="submit" />
                     </form>
+                    <SubTittleLogin>
+                        Ao clicar em "criar minha conta grátis", declaro que aceito as Políticas de Privacidade e os Termos de Uso da DIO.
+                    </SubTittleLogin>
                     <Row>
-                        <EsqueciText>Esqueci a senha</EsqueciText>
-                        <CriarText href="/register">Criar</CriarText>
+                     <Rowtext>Já tenho conta. <LoginText href="./login">Fazer login</LoginText></Rowtext>
                     </Row>
                 </Wrapper>
             </div>
@@ -83,4 +90,4 @@ const Login = () => {
     </>)
 }
 
-export { Login }
+export { Register }
