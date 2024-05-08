@@ -9,25 +9,26 @@ import * as yup from 'yup';
 import { useNavigate } from "react-router-dom";
 import { api } from '../../services/api'
 
+import { IFormdata } from "./types";
+
 import {
     Colunm,
     Conteiner,
-    Rowtext,
+    CriarText,
+    EsqueciText,
     Row,
     SubTittleLogin,
     Tittle,
     TittleLogin,
-    Wrapper,
-    LoginText
+    Wrapper
 } from "./stye"
 
 const schema = yup.object({
-    email: yup.string().email('email invalido').required("*campo obrigatorio"),
-    password: yup.string().min(3, '3 no minimo').required("*campo obrigatorio"),
-    nome: yup.string().required("*campo obrigatorio")
+    email: yup.string().email('email invalido').required("campo obrigatorio"),
+    password: yup.string().min(3, '3 no minimo').required("campo obrigatorio"),
 }).required();
 
-const Register = () => {
+const Login = () => {
 
     const navigate = useNavigate();
 
@@ -35,12 +36,12 @@ const Register = () => {
         control,
         handleSubmit,
         formState: { errors }
-    } = useForm({
+    } = useForm<IFormdata>({
         resolver: yupResolver(schema),
         mode: 'onChange',
         });
 
-    const onSubmit = async formData => {
+    const onSubmit = async (formData: IFormdata) => {
         try{
             const { data } = await api.get(`users?email=${formData.email}&senha=${formData.password}`);
             if(data.length === 1){
@@ -58,31 +59,25 @@ const Register = () => {
         <Conteiner>
             <Colunm>
                 <Tittle>
-                A plataforma para você aprender com experts, dominar as principais tecnologias e entrar mais rápido nas empresas mais desejadas.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto porro re
                 </Tittle>
             </Colunm>
             <div>
                 <Wrapper>
                     <TittleLogin>
-                        Comece agora grátis
+                        cadastro
                     </TittleLogin>
                     <SubTittleLogin>
-                        Crie sua conta e make the change._
+                        Chage._
                     </SubTittleLogin>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <Input name="nome" errorMessege={errors?.nome?.message} control={control} placeholder="Nome completo" />
-
                         <Input name="email" errorMessege={errors?.email?.message} control={control} placeholder="email" />
-
                         <Input name="password" errorMessege={errors?.password?.message} control={control} placeholder="Senha" type="password" />
-
-                        <Button title="Criar minha conta" variant="secondary"  type="submit" />
+                        <Button title="Entrar" variant="secondary"  type="submit" />
                     </form>
-                    <SubTittleLogin>
-                        Ao clicar em "criar minha conta grátis", declaro que aceito as Políticas de Privacidade e os Termos de Uso da DIO.
-                    </SubTittleLogin>
                     <Row>
-                     <Rowtext>Já tenho conta. <LoginText href="./login">Fazer login</LoginText></Rowtext>
+                        <EsqueciText>Esqueci a senha</EsqueciText>
+                        <CriarText href="/register">Criar</CriarText>
                     </Row>
                 </Wrapper>
             </div>
@@ -90,4 +85,4 @@ const Register = () => {
     </>)
 }
 
-export { Register }
+export { Login }

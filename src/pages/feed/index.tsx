@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 import { Header } from "../../components/Header/index";
 import { Card } from "../../components/Card"
 import { UserInfo } from "../../components/UserInfo"
@@ -7,7 +5,6 @@ import { UserInfo } from "../../components/UserInfo"
 import {
     Container,
     Column,
-    Title,
     Titleighlight,
 } from "./stye"
 

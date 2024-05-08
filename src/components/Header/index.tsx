@@ -1,8 +1,8 @@
-import React from 'react'
 import logo from '../../assets/Dio-logo.jpg'
 import { Button } from '../Button'
 
 import { useNavigate } from 'react-router-dom';
+import { iHeader } from './types';
 
 import {
     BuscarInputConteiner,
@@ -16,7 +16,7 @@ import {
 } from './styles';
 
 
-const Header = ({autenticado}) => {
+const Header = ({autenticado} :iHeader) => {
 
   const navigate = useNavigate();
 
